@@ -17,14 +17,19 @@ var enemyNames = ["Roberto", "Amy Android", "Robo Trumblea"]
 var enemyHealth = 50;
 var enemyAttack = 12;
 
+
+
 var fight = function(enemyName) {
+    // repaet and excute as long as the enemy-robots is alive
+    while(enemyHealth > 0) {
+    // place fight function code block here ...
+    
     // Alert players that they are starting the round
-    window.alert("Welcome to Robot Gladiators!");
-
+    window.alert("Welcome to Robots Gladiators!")
+    
     var promptFight =  window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
-
-// if player choses to fight, then fight
-if (promptFight === "fight" || promptFight === "FIGHT" || promptFight === "Fight") {
+    // if player choses to fight, then fight
+    if (promptFight === "fight" || promptFight === "FIGHT" || promptFight === "Fight") {
     // remove enemy's health by subtracting the amout set in the playerAttack variable
     enemyHealth = enemyHealth - playerAttack;
     console.log(
@@ -43,14 +48,16 @@ if (promptFight === "fight" || promptFight === "FIGHT" || promptFight === "Fight
 
     // Log a resulting message to the console so we know that it worked.
     console.log(
-        enemyName = " attacked " + playerName + " now has " + playerHealth + " health remaining.");
+        enemyName + " attacked " + playerName + " now has " + playerHealth + " health remaining.");
 
     // check players health
     if (playerHealth <= 0) {
-        window.alert(playerName + "has died!");
+        window.alert(playerName + " has died!");
     } else {
         window.alert(playerName + " still has " + playerHealth + " health left.");
     }
+
+
 
 } else if (promptFight === "skip" || promptFight === "SKIP") {
     // confirm player wants to skip
@@ -67,8 +74,17 @@ if (promptFight === "fight" || promptFight === "FIGHT" || promptFight === "Fight
     else {
         fight();
     }
+
 }
+    
+    }
+
 };
-   for(var i = 0; i <enemyNames.length; i++) {
-       fight(enemyNames[i]);
+   for(var i = 0; i < enemyNames.length; i++) {
+       var pickedEnemyName = enemyNames[i];
+       enemyHealth = 50;
+       fight(pickedEnemyName);
+
    }
+
+
