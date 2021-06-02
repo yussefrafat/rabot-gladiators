@@ -20,13 +20,8 @@ var enemyAttack = 12;
 
 
 var fight = function(enemyName) {
-    // repaet and excute as long as the enemy-robots is alive
-    while(enemyHealth > 0) {
-    // place fight function code block here ...
-    
-    // Alert players that they are starting the round
-    window.alert("Welcome to Robots Gladiators!")
-    
+    while(playerHealth > 0 && enemyHealth > 0) {
+    // ask player if they'd like to fight or run
     var promptFight =  window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
     // if player choses to fight, then fight
     if (promptFight === "fight" || promptFight === "FIGHT" || promptFight === "Fight") {
@@ -37,10 +32,13 @@ var fight = function(enemyName) {
     );
 
     // check enemy's health 
-    if (enemyHealth <= 0) {
+   // if the enemy-robot's health is zero or less, exit from the fight loop.
+   if (enemyHealth <= 0) {
         window.alert(enemyName + " has died!");
-    } 
-    else {
+        playerMoney = playerMoney +20;
+        break
+    
+    }else {
         window.alert(enemyName + " still has " + enemyHealth + " health left.");
     }
     // Subtract the value of `enemyAttack` from the value of `playerHealth` and use that result to update the value in the `playerHealth` variable.
@@ -53,13 +51,14 @@ var fight = function(enemyName) {
     // check players health
     if (playerHealth <= 0) {
         window.alert(playerName + " has died!");
+        break;
     } else {
         window.alert(playerName + " still has " + playerHealth + " health left.");
     }
 
 
-
-} else if (promptFight === "skip" || promptFight === "SKIP") {
+// if player pciks "skip" confirm and then stop the loop 
+} if (promptFight === "skip" || promptFight === "SKIP" || promptFight === "Skip") {
     // confirm player wants to skip
     var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
@@ -67,7 +66,9 @@ var fight = function(enemyName) {
     if (confirmSkip) {
         window.alert(playerName + " has decided to skip this fight. Goodbye!");
         /// subtract money from playerMoney for skipping 
-        playerMoney = playerMoney - 2;
+        playerMoney = playerMoney - 10;
+        console.log("playerMoney", playerMoney);
+        break;
     }
 
     // if no (false), ask question again by running fight() again
